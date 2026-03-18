@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogPost from '../../../../layouts/BlogPost.astro';
+import { getPostSlug } from '../../../../utils/postUrl';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => {
+    const d = post.data.pubDate;
+    return {
+      params: {
+        year: String(d.getUTCFullYear()),
+        month: String(d.getUTCMonth() + 1).padStart(2, '0'),
+        day: String(d.getUTCDate()).padStart(2, '0'),
+        slug: getPostSlug(post),
+      },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<BlogPost headings={headings} {...post.data}>
+  <Content />
+</BlogPost>
