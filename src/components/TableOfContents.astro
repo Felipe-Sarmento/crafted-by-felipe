@@ -1,0 +1,56 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{toc.length > 0 && (
+  <nav id="toc">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+      On this page
+    </p>
+    <ul class="space-y-1 text-sm">
+      {toc.map((heading) => (
+        <li class:list={[heading.depth === 3 && 'ml-3']}>
+          <a
+            href={`#${heading.slug}`}
+            class="toc-link block rounded px-2 py-1 text-gray-600 no-underline transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<script>
+  const headingEls = document.querySelectorAll('article h2, article h3');
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+
+  if (headingEls.length > 0 && tocLinks.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            tocLinks.forEach((l) => l.classList.remove('toc-active'));
+            const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+            active?.classList.add('toc-active');
+          }
+        }
+      },
+      { rootMargin: '0px 0px -60% 0px' }
+    );
+
+    headingEls.forEach((el) => observer.observe(el));
+  }
+</script>
