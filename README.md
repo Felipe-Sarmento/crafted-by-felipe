@@ -1,62 +1,81 @@
-# Astro Starter Kit: Blog
+# craftedbyfelipe
 
-```sh
-pnpm create astro@latest -- --template blog
+Blog pessoal sobre desenvolvimento web, tecnologia e carreira.
+
+**Site:** [craftedbyfelipe.com](https://craftedbyfelipe.com)
+
+## Stack
+
+- [Astro 6](https://astro.build) — framework estático
+- [Tailwind CSS 4](https://tailwindcss.com) — estilização
+- [MDX](https://mdxjs.com) — posts em Markdown com componentes
+- [pnpm](https://pnpm.io) — gerenciador de pacotes
+
+## Estrutura do projeto
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
+├── public/              # Assets estáticos (fontes, favicon, imagens)
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
+│   ├── components/      # Componentes Astro reutilizáveis
+│   ├── content/blog/    # Posts em Markdown/MDX
+│   ├── layouts/         # Layouts de página
+│   ├── pages/           # Rotas (file-based routing)
+│   ├── styles/          # CSS global
+│   ├── utils/           # Utilitários TypeScript
+│   └── consts.ts        # Constantes globais (título, descrição, autor)
 ├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+└── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Desenvolvimento local
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+pnpm install
+pnpm dev        # http://localhost:4321
+```
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+| Comando        | Ação                                        |
+| :------------- | :------------------------------------------ |
+| `pnpm dev`     | Inicia servidor de desenvolvimento          |
+| `pnpm build`   | Gera build de produção em `./dist/`         |
+| `pnpm preview` | Pré-visualiza o build localmente            |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Criando um post
 
-## 🧞 Commands
+Crie um arquivo em `src/content/blog/` seguindo o padrão de nome `YYYY-MM-DD-slug.md`:
 
-All commands are run from the root of the project, from a terminal:
+```markdown
+---
+title: 'Título do post'
+description: 'Descrição breve'
+pubDate: 'YYYY-MM-DD'
+tags: ['tag1', 'tag2']
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+Conteúdo aqui...
+```
 
-## 👀 Want to learn more?
+O post ficará disponível em `/YYYY/MM/DD/slug/`.
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Imagens
 
-## Credit
+Coloque imagens em `public/` e referencie como `/nome-da-imagem.jpg` nos posts.
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+## Deploy na Vercel
+
+O deploy é feito automaticamente via integração com o GitHub:
+
+- Push para `main` → deploy em produção em [craftedbyfelipe.com](https://craftedbyfelipe.com)
+
+### Configuração inicial (feita uma vez)
+
+1. Acesse [vercel.com](https://vercel.com) e faça login com o GitHub
+2. Clique em **Add New Project** e selecione o repositório `craftedbyfelipe`
+3. A Vercel detecta Astro automaticamente — as configurações padrão já funcionam:
+   - **Framework:** Astro
+   - **Build Command:** `pnpm build`
+   - **Output Directory:** `dist`
+   - **Install Command:** `pnpm install`
+4. Clique em **Deploy**
+
+A partir daí, qualquer push para `main` dispara um novo deploy automaticamente.
