@@ -1,5 +1,5 @@
 ---
-title: "O porquê eu criei um blog e como eu o fiz"
+title: "O porquê de eu ter criado um blog e como eu o fiz"
 description: "A jornada de quatro anos até criar um blog: do perfeccionismo técnico até a simplicidade razoável"
 pubDate: 2026-03-19
 tags: [astro, blog, arquitetura, web]
