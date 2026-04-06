@@ -30,7 +30,7 @@ const { title, description, pubDate, updatedDate, heroImage, headings = [] } = A
     <main id="main-content" class="mx-auto w-full max-w-5xl flex-1 px-4 py-10">
       <div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
         <!-- Main content -->
-        <article aria-labelledby="post-title">
+        <article aria-labelledby="post-title" class="min-w-0">
           {heroImage && (
             <img
               class="mb-8 w-full rounded-xl object-cover shadow-md"
@@ -56,7 +56,7 @@ const { title, description, pubDate, updatedDate, heroImage, headings = [] } = A
             <hr class="mt-6 border-gray-200 dark:border-gray-800" />
           </header>
 
-          <div class="prose prose-gray max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-code:before:content-none prose-code:after:content-none">
+          <div class="prose prose-gray max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-code:before:content-none prose-code:after:content-none prose-pre:overflow-x-auto">
             <slot />
           </div>
         </article>
