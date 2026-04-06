@@ -1,3 +1,29 @@
+# Available Skills
+
+### `/soon-manage`
+**Use when:** Adicionando ou removendo posts planejados na página `/soon`.
+
+Defines:
+- `add "título" "descrição"` — Adiciona um novo item à lista de posts planejados
+- `remove "título"` — Remove um item existente pela correspondência do título
+- Operações diretas no array `planned` do arquivo `src/pages/soon.astro`
+
+**Invoke:** `/soon-manage add "Título do Post" "Descrição"` ou `/soon-manage remove "Título do Post"`
+
+---
+
+### `/post-editorial`
+**Use when:** Escrevendo ou revisando um post de blog para garantir que reflete a voz editorial de Felipe.
+
+Defines:
+- 8 regras de tom, estrutura e conteúdo que caracterizam o estilo de Felipe
+- Checklist de 9 itens para validar post antes de publicar
+- Foco em: processo > resultado, trade-offs explícitos, mental dump (não tutorial)
+
+**Invoke:** Use como referência antes de escrever um novo post ou para revisar um rascunho.
+
+---
+
 # Git Workflow Rules
 
 ## Protected Branches
