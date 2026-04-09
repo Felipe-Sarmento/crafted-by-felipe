@@ -12,15 +12,16 @@ Defines:
 
 ---
 
-### `/post-editorial`
-**Use when:** Escrevendo ou revisando um post de blog para garantir que reflete a voz editorial de Felipe.
+### `/post-creation`
+**Use when:** Criando um novo post no blog a partir de conteúdo bruto.
 
 Defines:
-- 8 regras de tom, estrutura e conteúdo que caracterizam o estilo de Felipe
-- Checklist de 9 itens para validar post antes de publicar
-- Foco em: processo > resultado, trade-offs explícitos, mental dump (não tutorial)
+- Parse de conteúdo passado como `$ARGUMENTS`
+- Criação do arquivo em `src/content/blog/YYYY-MM-DD-{slug}.md`
+- Inferência de metadados (title, description, pubDate, tags) e geração do slug
+- Confirmação do caminho e URL após criação
 
-**Invoke:** Use como referência antes de escrever um novo post ou para revisar um rascunho.
+**Invoke:** `/post-creation <conteúdo do post>`
 
 ---
 
