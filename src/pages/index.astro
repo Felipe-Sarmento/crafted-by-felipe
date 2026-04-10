@@ -15,7 +15,8 @@ const posts = (await getCollection('blog')).sort(
 const grouped = new Map<string, typeof posts>();
 for (const post of posts) {
   const d = post.data.pubDate;
-  const key = `${d.getFullYear()} - ${d.toLocaleString('en-US', { month: 'long' })}`;
+  const month = d.toLocaleString('pt-BR', { month: 'long' });
+  const key = `${d.getFullYear()} - ${month.charAt(0).toUpperCase() + month.slice(1)}`;
   if (!grouped.has(key)) grouped.set(key, []);
   grouped.get(key)!.push(post);
 }
