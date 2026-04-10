@@ -1,5 +1,5 @@
 ---
-title: "Voltando ao básico com o Roadmap.sh: task tracker via CLI"
+title: "Voltando ao Básico com o Roadmap.sh: Task Tracker via CLI"
 description: "O que acontece quando você abandona o banco de dados, o Docker e as libs e resolve um problema com filesystem e TypeScript puro"
 pubDate: 2026-04-05
 tags: [typescript, cli, arquitetura, roadmap.sh, desafios]
