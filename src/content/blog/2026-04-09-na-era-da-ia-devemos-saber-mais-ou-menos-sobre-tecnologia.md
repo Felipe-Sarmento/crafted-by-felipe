@@ -70,3 +70,4 @@ O "o quê" e o "como" não param de mudar. Aquele problema de negócio que impor
 
 E é exatamente porque ambos evoluem continuamente que a exigência de aprender sobre ambos também nunca para. Não existe períodos de "problema resolvido" — em negócio ou em tecnologia. A mudança é a única constante.
 
+Por fim, deixo um muitíssimo obrigado ao <a href="https://www.instagram.com/murilo.gruppi/">Murilo Gruppi</a> pelo excelente post e a oportunidade de uma ótima discussão.
