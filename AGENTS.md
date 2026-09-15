@@ -1,4 +1,4 @@
-# Available Skills
+# Available Commands
 
 ### `/soon-manage`
 **Use when:** Adicionando ou removendo posts planejados na página `/soon`.
@@ -9,6 +9,8 @@ Defines:
 - Operações diretas no array `planned` do arquivo `src/pages/soon.astro`
 
 **Invoke:** `/soon-manage add "Título do Post" "Descrição"` ou `/soon-manage remove "Título do Post"`
+
+Definido em `.opencode/command/soon-manage.md`.
 
 ---
 
@@ -22,6 +24,8 @@ Defines:
 - Confirmação do caminho e URL após criação
 
 **Invoke:** `/post-creation <conteúdo do post>`
+
+Definido em `.opencode/command/post-creation.md`.
 
 ---
 
