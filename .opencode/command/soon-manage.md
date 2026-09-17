@@ -1,10 +1,13 @@
-# Soon Manage Skill
+---
+description: Adiciona ou remove posts planejados na página /soon
+agent: build
+---
 
-**When to use:** Quando o usuário quer adicionar ou remover um item da lista de posts planejados em `/soon`.
+Quando o usuário invoca `/soon-manage`, ele quer adicionar ou remover um item da lista de posts planejados em `/soon`. O argumento é: $ARGUMENTS
 
 ## Rules
 
-1. O arquivo a editar é sempre `src/pages/soon.astro` (relativo ao root `/home/felipe/Coding/Personal/craftedbyfelipe/`)
+1. O arquivo a editar é sempre `src/pages/soon.astro` (relativo à raiz do projeto)
 2. O array `planned` está no frontmatter do arquivo (entre os `---`)
 3. **add**: Inserir novo objeto `{ title: '...', description: '...' }` ao final do array, antes do comentário `// add more here`
 4. **remove**: Deletar o objeto cujo `title` corresponda (exato ou próximo) ao argumento, incluindo a vírgula e linhas em branco adjacentes
