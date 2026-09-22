@@ -18,7 +18,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
       On this page
     </p>
-    <ul class="space-y-1 text-sm">
+    <ul class="toc-scroll max-h-[calc(100vh-7rem)] space-y-1 overflow-y-auto overscroll-contain pr-1 text-sm">
       {toc.map((heading) => (
         <li class:list={[heading.depth === 3 && 'ml-3']}>
           <a
@@ -45,6 +45,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
             tocLinks.forEach((l) => l.classList.remove('toc-active'));
             const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
             active?.classList.add('toc-active');
+            active?.scrollIntoView({ block: 'nearest' });
           }
         }
       },
