@@ -29,6 +29,65 @@ Definido em `.opencode/command/post-creation.md`.
 
 ---
 
+### `/corrigir`
+**Use when:** Revisando ortografia e gramática de um texto ou post.
+
+Defines:
+- Interpreta `$ARGUMENTS` como caminho de arquivo (lido antes de analisar), texto colado ou vazio (alvo inferido pelo contexto)
+- Delega ao agente **Corrector**, que roda em modo plano (read-only, `edit: deny`)
+- Apresenta plano de correções (tabela `Local | Original | Corrigido | Motivo`) sem aplicar nada
+- A aplicação é feita depois pelo agente `build` (Tab)
+
+**Invoke:** `/corrigir src/content/blog/YYYY-MM-DD-{slug}.md` ou `/corrigir <texto>`
+
+Definido em `.opencode/command/corrigir.md`. Agente em `.opencode/agent/corrector.md`.
+
+---
+
+# Agents
+
+### `corrector`
+**Use when:** Corrigir grafia (ortografia, acentuação, pontuação, concordância, regência, crase).
+
+- `mode: primary` — selecionável via Tab
+- Somente-leitura: `edit: deny` e `bash: deny`; usa apenas `read`, `glob`, `grep`
+- `temperature: 0.1` para correções determinísticas
+- Herda o modelo padrão da config global
+
+Definido em `.opencode/agent/corrector.md`.
+
+---
+
+# Skills
+
+### `review-livro`
+**Use when:** Iniciando ou continuando um post de resenha/leitura de livro em série (ex.: saga do Programador Pragmático, "capítulo N").
+
+Defines:
+- **Nunca** escrever o post inteiro por conta própria
+- Gera o *scaffold*: frontmatter + um heading por tópico com o corpo em branco marcado com `<< ESCRITO POR IA >>`
+- Preenche os tópicos **um a um**, conforme o autor enviar, removendo o marker da seção escrita
+- Mantém a voz da série (PT-BR, trade-offs, `## O Que Fica` + teaser do próximo capítulo)
+- Verificação final com `pnpm build`
+
+Definida em `.opencode/skill/review-livro/SKILL.md`.
+
+---
+
+### `pasta-draft`
+**Use when:** O autor mencionar a pasta "draft", "rascunhos" ou ideias ainda não publicadas, ou ao procurar material de origem para um post.
+
+Defines:
+- `draft/` na raiz guarda rascunhos crus em Markdown, **fora** de `src/content/blog`; não entram no build nem no site
+- Três estágios: `draft/*.md` → `/soon` (`src/pages/soon.astro`) → `src/content/blog/*.md`
+- Convenção de nome `{n} - {tema}.md` e estrutura recorrente (punchline, tese, estrutura, ideia central, frase de encerramento)
+- **Nunca** publicar, mover ou editar rascunhos sem pedido explícito
+- Ao buscar material de origem, checar `draft/` primeiro
+
+Definida em `.opencode/skill/pasta-draft/SKILL.md`.
+
+---
+
 # Git Workflow Rules
 
 ## Protected Branches
