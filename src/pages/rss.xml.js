@@ -7,7 +7,9 @@ import { getPostUrl } from '../utils/postUrl';
 const md = new MarkdownIt({ html: true, linkify: true });
 
 export async function GET(context) {
-	const posts = await getCollection('blog');
+	const posts = await getCollection('blog', ({ data }) =>
+		import.meta.env.PROD ? data.draft !== true : true
+	);
 	const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 	return rss({
