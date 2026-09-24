@@ -7,9 +7,11 @@ import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getPostUrl } from '../utils/postUrl';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const posts = (
+  await getCollection('blog', ({ data }) =>
+    import.meta.env.PROD ? data.draft !== true : true
+  )
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Group by "YYYY - Month"
 const grouped = new Map<string, typeof posts>();
