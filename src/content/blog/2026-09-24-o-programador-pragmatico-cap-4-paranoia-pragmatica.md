@@ -2,6 +2,7 @@
 title: "O Programador Pragmático, Capítulo 4: Paranoia Pragmática"
 description: "Leitura do Capítulo 4: projeto por contrato, falha rápida, programação assertiva, exceções e o equilíbrio dos recursos."
 pubDate: 2026-09-24
+updatedDate: 2026-09-27
 tags: [livros, programador-pragmatico, engenharia-de-software, tratamento-de-erros]
 ---
 
@@ -130,4 +131,4 @@ Paranoia pragmática é um nome bem escolhido porque junta duas coisas que parec
 
 O contrato diz o que cada lado promete. A falha rápida prefere a morte honesta ao estado mentiroso. A asserção vigia o que nunca deveria acontecer, sem se confundir com tratamento de erro. A exceção fica reservada ao que é de fato excepcional, lançada cedo e capturada tarde. E o recurso entra e sai pela mesma porta. Em todos os casos, a postura é a mesma: traçar limites claros e respeitá-los, porque a maior parte dos defeitos de software nasce justamente de uma fronteira que nunca foi definida.
 
-No próximo post eu encaro o Capítulo 5, **Curve-se ou Quebre**, onde o livro trata de acoplamento, reversibilidade, metaprogramação e das decisões que deixam o software flexível sem virar um labirinto.
+No próximo post eu encaro o Capítulo 5, **Seja Flexível**, onde o livro trata de acoplamento, reversibilidade, metaprogramação e das decisões que deixam o software flexível sem virar um labirinto.
